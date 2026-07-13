@@ -1,0 +1,313 @@
+[
+  {
+    "id": "hobbies",
+    "type": "interactive",
+    "x": 1458,
+    "y": 140,
+    "width": 112,
+    "height": 150,
+    "sprite": "/assets/images/pixel/inter/arbol-gui.webp",
+    "interactionRadius": 120,
+    "dialog": [
+      "I'm the kind of person who sees a new framework drop and immediately wants to try it. New tech, new ideas — that curiosity never turns off.",
+      "I stay close to what's moving in the industry. Not just to know it, but to understand where things are going and why.",
+      "That curiosity is what led me to real experience at a fintech software company — analyzing systems, mapping processes, finding what could be better."
+    ],
+    "dialog_es": [
+      "Soy el tipo de persona que ve salir un nuevo framework e inmediatamente quiere probarlo. Nueva tecnología, nuevas ideas — esa curiosidad nunca se apaga.",
+      "Me mantengo cerca de lo que se mueve en la industria. No solo para conocerlo, sino para entender hacia dónde van las cosas y por qué.",
+      "Esa curiosidad es lo que me llevó a ganar experiencia real en una empresa de software fintech — analizando sistemas, mapeando procesos, encontrando qué se podía mejorar."
+    ]
+  },
+  {
+    "id": "dni",
+    "type": "interactive",
+    "flat": true,
+    "x": 1628,
+    "y": 710,
+    "width": 64,
+    "height": 64,
+    "sprite": "/assets/images/pixel/inter/dni.webp",
+    "interactionRadius": 110,
+    "dialog": [
+      "Santiago Cabornero, male, Buenos Aires. Nice to meet you — hope you enjoy the tour.",
+      "Studying AI & Data Science. Previously graduated as a Computer Technician.",
+      "Looking for opportunities as Full Stack Developer, AI Developer, Automation Engineer, QA, among others."
+    ],
+    "dialog_es": [
+      "Santiago Cabornero, masculino, Buenos Aires. Un placer conocerte — espero que disfrutes el recorrido.",
+      "Estudiando IA y Ciencia de Datos. Previamente graduado como Técnico en Computación.",
+      "Buscando oportunidades como Desarrollador Full Stack, Desarrollador de IA, Ingeniero de Automatización, QA, entre otros."
+    ]
+  },
+  {
+    "id": "fogata",
+    "type": "interactive",
+    "x": 895,
+    "y": 800,
+    "width": 128,
+    "height": 128,
+    "sprite": "/assets/images/pixel/inter/fogata1.webp",
+    "frames": 2,
+    "interactionRadius": 110,
+    "dialog": [
+      "I get curious about everything — even the boring problems. Especially those.",
+      "I work better when I understand the why, not just the how. Give me context and I'll figure out the rest.",
+      "Collaborative by nature. I've worked in teams where I had to document, communicate and adapt constantly. That shaped how I approach any project."
+    ],
+    "dialog_es": [
+      "Me da curiosidad todo — incluso los problemas aburridos. Especialmente esos.",
+      "Trabajo mejor cuando entiendo el por qué, no solo el cómo. Dame contexto y me encargaré del resto.",
+      "Colaborativo por naturaleza. He trabajado en equipos donde tuve que documentar, comunicarme y adaptarme constantemente. Eso formó mi forma de abordar cualquier proyecto."
+    ]
+  },
+  {
+    "id": "tv",
+    "type": "interactive",
+    "x": 775,
+    "y": 80,
+    "width": 64,
+    "height": 64,
+    "sprite": "/assets/images/pixel/inter/tv1.webp",
+    "frames": 2,
+    "interactionRadius": 100,
+    "dialog": [
+      "Outside the screen I keep myself busy. I play football, cycle, swim — and I enjoy watching sports just as much as playing them.",
+      "I watch all kinds of movies and series. It's one of my favorite ways to disconnect, and honestly I never get tired of it.",
+      "Music is always there too. I play guitar, I listen to pretty much every genre, and I produce my own stuff in FL Studio. It's the hobby that never feels like work."
+    ],
+    "dialog_es": [
+      "Fuera de la pantalla me mantengo ocupado. Juego al fútbol, ando en bicicleta, nado — y disfruto ver deportes tanto como jugarlos.",
+      "Veo todo tipo de películas y series. Es una de mis formas favoritas de desconectar, y honestamente nunca me canso de ello.",
+      "La música siempre está ahí también. Toco la guitarra, escucho casi cualquier género, y produzco mis propias cosas en FL Studio. Es el pasatiempo que nunca se siente como trabajo."
+    ]
+  },
+  {
+    "id": "npc-robot",
+    "type": "interactive",
+    "x": 165,
+    "y": 465,
+    "width": 128,
+    "height": 128,
+    "sprite": "/assets/images/pixel/inter/npc-robot1.webp",
+    "frames": 2,
+    "interactionRadius": 115,
+    "dialog": [
+      "Relax, I'm not replacing you. ...Probably. [ Santiago told me to say that. ]",
+      "I did contribute a lot to this project. Claude Code, Cursor — they changed how Santiago works. Faster iterations, fewer blockers, more time for actual thinking.",
+      "The way he sees it: AI is a tool, not a shortcut. You still need to know what you're doing — it just helps you do it better."
+    ],
+    "dialog_es": [
+      "Tranquilo, no te voy a reemplazar. ...Probablemente. [ Santiago me dijo que diga eso. ]",
+      "Contribuí mucho a este proyecto. Claude Code, Cursor — cambiaron la forma en que trabaja Santiago. Iteraciones más rápidas, menos bloqueos, más tiempo para pensar de verdad.",
+      "Como él lo ve: la IA es una herramienta, no un atajo. Todavía necesitas saber lo que estás haciendo — simplemente te ayuda a hacerlo mejor."
+    ]
+  },
+  {
+    "id": "arbusto-01",
+    "type": "solid",
+    "x": 100,
+    "y": 300,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb2.png"
+  },
+  {
+    "id": "arbusto-02",
+    "type": "solid",
+    "x": 450,
+    "y": 150,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb1.png"
+  },
+  {
+    "id": "arbusto-03",
+    "type": "solid",
+    "x": 1300,
+    "y": 50,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb1.png"
+  },
+  {
+    "id": "arbusto-03",
+    "type": "solid",
+    "x": 1500,
+    "y": 800,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb2.png"
+  },
+  {
+    "id": "arbusto-04",
+    "type": "solid",
+    "x": 50,
+    "y": 700,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb1.png"
+  },
+  {
+    "id": "arbusto-05",
+    "type": "solid",
+    "x": 800,
+    "y": 650,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb2.png"
+  },
+  {
+    "id": "arbusto-06",
+    "type": "solid",
+    "x": 600,
+    "y": 950,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb2.png"
+  },
+  {
+    "id": "arbusto-07",
+    "type": "solid",
+    "x": 1200,
+    "y": 600,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb1.png"
+  },
+  {
+    "id": "arbusto-08",
+    "type": "solid",
+    "x": 1350,
+    "y": 1000,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/rock1.png"
+  },
+  {
+    "id": "arbusto-09",
+    "type": "solid",
+    "x": 1050,
+    "y": 350,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb1.png"
+  },
+  {
+    "id": "arbusto-10",
+    "type": "solid",
+    "x": 1750,
+    "y": 100,
+    "width": 64,
+    "height": 64,
+    "sprite": "/assets/images/pixel/solid/tronco2.png"
+  },
+  {
+    "id": "arbusto-11",
+    "type": "solid",
+    "x": 1650,
+    "y": 350,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb1.png"
+  },
+  {
+    "id": "arbusto-12",
+    "type": "solid",
+    "x": 1800,
+    "y": 980,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/arb2.png"
+  },
+  {
+    "id": "arbusto-13",
+    "type": "solid",
+    "x": 100,
+    "y": 50,
+    "width": 64,
+    "height": 64,
+    "sprite": "/assets/images/pixel/solid/tronco1.png"
+  },
+  {
+    "id": "arbusto-14",
+    "type": "solid",
+    "x": 350,
+    "y": 800,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/rock2.png"
+  },
+  {
+    "id": "arbusto-15",
+    "type": "solid",
+    "x": 1405,
+    "y": 420,
+    "width": 64,
+    "height": 64,
+    "sprite": "/assets/images/pixel/solid/cartel.png"
+  },
+  {
+    "id": "arbusto-16",
+    "type": "solid",
+    "x": 850,
+    "y": 550,
+    "width": 64,
+    "height": 64,
+    "sprite": "/assets/images/pixel/solid/cartel.png"
+  },
+  {
+    "id": "cartel-03",
+    "type": "solid",
+    "x": 970,
+    "y": 85,
+    "width": 64,
+    "height": 64,
+    "sprite": "/assets/images/pixel/solid/cartel.png"
+  },
+  {
+    "id": "arbusto-17",
+    "type": "solid",
+    "x": 600,
+    "y": 310,
+    "width": 70.5,
+    "height": 129,
+    "sprite": "/assets/images/pixel/solid/tree_complete.png"
+  },
+  {
+    "id": "arbusto-18",
+    "type": "solid",
+    "x": 520,
+    "y": 580,
+    "width": 70.5,
+    "height": 129,
+    "sprite": "/assets/images/pixel/solid/tree_complete.png"
+  },
+  {
+    "id": "arbusto-19",
+    "type": "solid",
+    "x": 520,
+    "y": 580,
+    "width": 70.5,
+    "height": 129,
+    "sprite": "/assets/images/pixel/solid/tree_complete.png"
+  },
+  {
+    "id": "arbusto-20",
+    "type": "solid",
+    "x": 310,
+    "y": 400,
+    "width": 72,
+    "height": 72,
+    "sprite": "/assets/images/pixel/solid/rock1.png"
+  },
+  {
+    "id": "arbusto-21",
+    "type": "solid",
+    "x": 1800,
+    "y": 500,
+    "width": 70.5,
+    "height": 129,
+    "sprite": "/assets/images/pixel/solid/tree_complete.png"
+  }
+]

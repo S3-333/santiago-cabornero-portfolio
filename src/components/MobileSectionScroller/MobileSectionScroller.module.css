@@ -1,0 +1,126 @@
+/* MobileSectionScroller.module.css
+   Scroll nativo CSS snap — sin GSAP, sin overlays costosos.
+   El browser maneja momentum táctil completamente. */
+
+/* ── Contenedor principal ──────────────────────────────────── */
+.viewport {
+  position: fixed;
+  inset: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  /* Ocultar scrollbar pero mantener funcionalidad */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Sección individual ────────────────────────────────────── */
+.section {
+  height: 100svh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* ── Dots de navegación — abajo al centro ──────────────────── */
+/* Accesibles con el pulgar en cualquier posición de la mano */
+.nav {
+  position: fixed;
+  bottom: env(safe-area-inset-bottom, 1rem);
+  bottom: max(env(safe-area-inset-bottom), 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9000;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+
+  pointer-events: auto;
+  mix-blend-mode: difference;
+
+  padding-bottom: 0.5rem;
+}
+
+/* Dot base */
+.dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  background: transparent;
+  opacity: 0.45;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition:
+    background    0.2s ease,
+    opacity       0.2s ease,
+    transform     0.2s ease;
+  /* Área táctil mínima de 44px (WCAG) */
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-clip: padding-box;
+}
+
+/* El círculo visible es pseudoelemento para mantener hitbox grande */
+.dot::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  background: transparent;
+  transition:
+    background    0.2s ease,
+    border-color  0.2s ease,
+    transform     0.2s ease,
+    opacity       0.2s ease;
+}
+
+.dot {
+  /* Reset visual del button */
+  border: none;
+  background: transparent;
+}
+
+.dotActive::before {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: scale(1.4);
+  opacity: 1;
+}
+
+.globalLangToggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 999999;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mix-blend-mode: difference;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}

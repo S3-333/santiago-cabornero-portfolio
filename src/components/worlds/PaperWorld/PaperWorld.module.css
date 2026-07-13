@@ -1,0 +1,108 @@
+.viewport {
+    /* Variables para la cuadrícula (ajusta el tamaño aquí) */
+    --grid-size: 30px;
+    --grid-color: rgba(0, 0, 0, 0.08);
+    /* Color de las líneas */
+    --bg-color: #f7f3ed;
+    /* Color base del papel */
+
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    cursor: grab;
+
+    /* El viewport mantiene el color base por si te sales de los límites del mundo */
+    background-color: var(--bg-color);
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+.world {
+    position: absolute;
+    top: 0;
+    left: 0;
+    will-change: transform;
+    perspective: 600px;
+
+    /* La cuadrícula ahora está en el mundo, por lo que se moverá al arrastrar */
+    background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: top left;
+}
+
+.introOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245, 240, 232, 0.92);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    text-align: left;
+}
+
+.introBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    padding: 2.5rem 3rem;
+    border: 1.5px solid rgba(42, 42, 110, 0.2);
+    background: rgba(255, 253, 245, 0.85);
+}
+
+.introTag {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: rgba(42, 42, 110, 0.5);
+    margin: 0;
+    letter-spacing: 0.1em;
+}
+
+.introTitle {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #2a2a6e;
+    margin: 0;
+}
+
+.introDesc {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(42, 42, 110, 0.65);
+    margin: 0;
+}
+
+.introPrompt {
+    font-family: 'Caveat', cursive;
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    color: rgba(42, 42, 110, 0.35);
+    margin: 0.5rem 0 0;
+    animation: blink 1.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+}
+
+

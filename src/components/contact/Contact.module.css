@@ -1,0 +1,488 @@
+/* ============================================================
+   Contact.module.css
+   Sección de contacto con DNI flip card.
+   Tipografía: Helvetica Neue (sans-serif fallback).
+   ============================================================ */
+
+/* ── Root ─────────────────────────────────────────────────── */
+.root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Fondo elegante que cierra el portfolio */
+  background: #d4ced4;
+  overflow: hidden;
+}
+
+/* Ruido sutil de fondo */
+.root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 110%, rgba(100, 180, 200, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(180, 120, 210, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+
+/* ── Scene (perspectiva 3-D) ──────────────────────────────── */
+.scene {
+  /* Aspect ratio del DNI argentino ~85.6 × 54 mm => ~1.585 */
+  width: min(72vw, 820px);
+  aspect-ratio: 1.585;
+
+  perspective: 1400px;
+  cursor: pointer;
+  position: relative; /* para el pseudo-element de sombra */
+  /* Button reset */
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+/* Sombra separada del .card para no romper preserve-3d
+   (filter en el elemento 3D aplana el contexto) */
+.scene::after {
+  content: '';
+  position: absolute;
+  inset: 10% 5% -12%;
+  background: rgba(0, 0, 0, 0.35);
+  filter: blur(32px);
+  border-radius: 16px;
+  z-index: -1;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.scene:hover::after {
+  filter: blur(48px);
+  opacity: 1.2;
+}
+
+/* ── Card (contenedor rotante) ────────────────────────────── */
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* CRÍTICO: NO poner filter/opacity/will-change aquí —
+     cualquiera de esas props aplana el contexto 3D */
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.45, 0.05, 0.15, 1);
+}
+
+.sceneFlipped .card {
+  transform: rotateY(180deg);
+}
+
+/* ── Cara común ───────────────────────────────────────────── */
+.cardFace {
+  position: absolute;
+  inset: 0;
+  /* flat evita que hijos creen sub-contextos 3D */
+  transform-style: flat;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ── Imagen DNI ───────────────────────────────────────────── */
+.dniImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+/* ── Trasero: pre-rotado 180° en el eje Y.
+   Cuando .card llega a rotateY(180deg), éste vuelve a 0°
+   y muestra la cara correcta. ────────────────────────────── */
+.cardBack {
+  transform: rotateY(180deg);
+}
+
+/* ────────────────────────────────────────────────────────────
+   OVERLAYS DE TEXTO
+   Cada overlay es position:absolute dentro del .cardFace.
+   Ajusta top/left/right/bottom a tu gusto.
+   ─────────────────────────────────────────────────────────── */
+.overlay {
+  position: absolute;
+  /* Sin background por defecto; ajustar si se necesita contraste */
+}
+
+/* ── LinkedIn ──────────────────── */
+.overlayLinkedin {
+  top: 15%;
+  left: 35%;
+  
+}
+
+/* ── GitHub ────────────────────── */
+.overlayGithub {
+  top: 27%;
+  left: 35%;
+}
+
+/* ── IP / "número de DNI" ─────── */
+.overlayIp {
+  bottom: 8%;
+  left: 4%;
+}
+
+/* ── Mail ──────────────────────── */
+.overlayMail {
+  top: 39%;
+  left: 35%;
+}
+
+/* ── CV Descargable ────────────── */
+.overlayCv {
+  top: 51%;
+  left: 35%;
+}
+
+/* ── Reloj — esquina inf-izq ───── */
+.overlayClock {
+  bottom: 3%;
+  right: 1.2%;
+}
+
+/* ── Mensaje trasero ───────────── */
+.overlayFarewellTopLeft {
+  top: 22%;
+  left: 9%;
+  text-align: center;
+  width: 26%;
+}
+
+.overlayFarewellBottomCenter {
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Título principal ──────────────────────────────────── */
+.overlayTitle {
+  top: 18%;
+  left: 9.5%;
+}
+
+
+
+/* ────────────────────────────────────────────────────────────
+   TIPOGRAFÍA
+   ─────────────────────────────────────────────────────────── */
+
+.linkSubtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.2rem;
+  opacity: 0.7;
+}
+
+.link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #1a1a2e;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease;
+  line-height: 1;
+  white-space: nowrap;
+  /* Button reset */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.link:hover {
+  opacity: 0.5;
+}
+
+.mainTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+}
+
+/* ── Fila texto + icono ─────────────────────────────────────
+   Envuelve cada link con su SVG. El icono se adapta al
+   tamaño de la fuente mediante 1em x 1em.
+   ─────────────────────────────────────────────────────────── */
+.linkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.15em;        /* espacio reducido entre texto e icono */
+}
+
+/* Icono SVG — mismo tamaño que la tipografía */
+.linkIcon {
+  width: 1em;
+  height: 1em;
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+  /* Hereda el tamaño del .link padre vía em */
+  font-size: inherit;
+}
+
+.copyIcon {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease, filter 0.2s ease;
+  /* Button reset */
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyIcon:hover {
+  transform: scale(1.15) translateY(-2px);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  opacity: 0.9;
+}
+
+.copyIconActive {
+  transform: scale(0.9);
+  opacity: 0.7;
+}
+
+.copyFeedback {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #758ca3;
+  margin-left: 0.5em;
+  animation: fadeInOut 2s forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(4px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
+
+.dataText {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.cvLink {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.clockText {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.5em; 
+  font-weight: 700;
+  color: #81c9d1;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+
+/* ── Farewell ──────────────────────────────────────────────── */
+.farewellTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1a1a2e;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+.farewellBody {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2a2a3e;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* ── Hover sutil: ligero levantamiento ──────────────────── */
+.scene:hover .card {
+  /* solo transform, no filter (rompe preserve-3d) */
+  transform: rotateY(0deg) translateY(-2px);
+}
+
+.sceneFlipped:hover .card {
+  transform: rotateY(180deg) translateY(-2px);
+}
+
+/* ════════════════════════════════════════════════════════════
+   HUELLA DACTILAR — Arriba a la derecha del trasero
+   ════════════════════════════════════════════════════════════ */
+
+/* Posición en el DNI trasero */
+.overlayFingerprint {
+  top: 11%;
+  right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+  /* Button reset */
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Contenedor: sin tamaño fijo, sin borde, sin recorte.
+   La imagen se muestra en su tamaño natural ajustado por el contenedor. */
+.fingerprintWrap {
+  position: relative;
+  width: 150px;
+  aspect-ratio: 1;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Hover en reposo: ligero scale, sin borde */
+.overlayFingerprint:hover .fingerprintWrap {
+  transform: scale(1.04);
+}
+
+/* Estado: escaneando — glow cian sin bordes */
+.fingerprintActive {
+  animation: fpGlowPulse 1.4s ease-in-out infinite;
+}
+
+/* Estado: verificado — glow verde sin bordes */
+.fingerprintMatched {
+  animation: fpGlowMatch 0.5s ease-out forwards !important;
+}
+
+@keyframes fpGlowPulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.55)); }
+  50%       { filter: drop-shadow(0 0 16px rgba(0, 200, 255, 0.9)); }
+}
+
+@keyframes fpGlowMatch {
+  0%   { filter: drop-shadow(0 0 28px rgba(0, 230, 130, 1)); }
+  100% { filter: drop-shadow(0 0 10px rgba(0, 230, 130, 0.65)); }
+}
+
+/* Imagen de la huella — tamaño natural ajustado al wrapper, sin recorte */
+.fingerprintImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.82;
+  transition: opacity 0.3s ease, mix-blend-mode 0.3s;
+}
+
+.fingerprintActive .fingerprintImg {
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+
+/* ── Línea de escaneo ──────────────────────────────────── */
+.scanLine {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 200, 255, 0.9) 40%,
+    rgba(180, 255, 255, 1) 50%,
+    rgba(0, 200, 255, 0.9) 60%,
+    transparent 100%
+  );
+  box-shadow: 0 0 8px 2px rgba(0, 200, 255, 0.6);
+  animation: scanDown 0.9s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes scanDown {
+  0%   { top: 0%;   opacity: 0.2; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 100%; opacity: 0.2; }
+}
+
+/* ── Grid overlay ──────────────────────────────────────── */
+.scanGrid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-image:
+    linear-gradient(rgba(0, 200, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 255, 0.12) 1px, transparent 1px);
+  background-size: 12px 12px;
+  animation: gridFadeIn 0.4s ease forwards;
+}
+
+.scanGridMatched {
+  background-image:
+    linear-gradient(rgba(0, 230, 130, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 230, 130, 0.18) 1px, transparent 1px);
+}
+
+@keyframes gridFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Puntos de feature detection ───────────────────────── */
+.fpDot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(0, 230, 130, 0.95);
+  box-shadow: 0 0 6px 2px rgba(0, 230, 130, 0.8);
+  pointer-events: none;
+  z-index: 4;
+  animation: dotPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transform: scale(0);
+}
+
+.fpDot1 { top: 22%; left: 30%; animation-delay: 0.05s; }
+.fpDot2 { top: 45%; left: 58%; animation-delay: 0.13s; }
+.fpDot3 { top: 65%; left: 25%; animation-delay: 0.20s; }
+.fpDot4 { top: 38%; left: 72%; animation-delay: 0.28s; }
+.fpDot5 { top: 70%; left: 62%; animation-delay: 0.35s; }
+
+@keyframes dotPop {
+  to { transform: scale(1); }
+}

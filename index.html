@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── SEO ──────────────────────────────────────────────────────────────── -->
+  <!-- FIX #2: title descriptivo en lugar de "portfolio" -->
+  <title>Santiago Cabornero — Portfolio</title>
+  <meta name="description" content="Portfolio de Santiago Cabornero — Desarrollador" />
+  <meta name="author" content="Santiago Cabornero" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Santiago Cabornero — Portfolio" />
+  <meta property="og:description" content="Desarrollador" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/images/brutalism/foto.webp" />
+
+  <!-- ── Favicon ───────────────────────────────────────────────────────────
+       FIX #1: ruta sin /public/ y tipo correcto (webp) -->
+  <link rel="icon" type="image/webp" href="/assets/favicon/a.webp" />
+
+  <!-- Bebas Neue autohospedada: fuente del LCP (h1 en Portal). Resto async. -->
+  <link rel="preload" href="/assets/images/encuadro_profesional_movil/photo_me4.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/assets/fonts/BebasNeue-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- Cabinet Grotesk: fuente usada en MobilePortal (crítico para LCP mobile).
+       Precargar desde el HTML evita la cadena CSS→@font-face de 554ms que
+       Lighthouse reporta en el critical request chain. -->
+  <link rel="preload" href="/assets/fonts/CabinetGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/CabinetGrotesk-Medium.woff2"  as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/CabinetGrotesk-Bold.woff2"    as="font" type="font/woff2" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

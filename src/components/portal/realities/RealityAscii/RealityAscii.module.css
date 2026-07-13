@@ -1,0 +1,95 @@
+.reality {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: #0a0a0a;
+  cursor: none;
+}
+
+/* Canvas ocupa todo — es el fondo interactivo */
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Texto encima del canvas */
+.content {
+  position: absolute;
+  top: 8%;
+  left: 6%;
+  z-index: 10;
+  color: #00ff41;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.tag {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.name {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tagline {
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  margin-top: 1.2rem;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Zona inferior */
+.bottomCenter {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Botón */
+.btn {
+  background: transparent;
+  border: 1px solid rgba(0, 255, 65, 0.4);
+  color: #00ff41;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 10px 28px;
+  cursor: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: #00ff41;
+  background: rgba(0, 255, 65, 0.08);
+}
+
+.btn:disabled {
+  opacity: 0.3;
+}
+
+.scrollHint {
+  font-family: 'JetBrains Mono', monospace;
+  color: #00ff41
+}

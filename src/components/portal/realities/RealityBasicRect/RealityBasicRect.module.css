@@ -1,0 +1,225 @@
+.reality {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: #fff;
+  color: #0a0a0a;
+  cursor: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: clamp(1.25rem, 3vh, 2.5rem) clamp(1rem, 3vw, 2.5rem) clamp(5rem, 10vh, 6.5rem);
+}
+
+/* ── Cursor ── */
+.cursorDot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform, opacity;
+  mix-blend-mode: difference;
+}
+
+.cursorRing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform, width, height, opacity;
+  transition: width 0.2s ease, height 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+/* ── Título arriba, centrado (altura fija para no saltar al cambiar fuente) ── */
+.titleBlock {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: clamp(4rem, 8vw, 6.5rem);
+  margin-bottom: clamp(0.75rem, 2vh, 1.5rem);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.name {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  max-width: 96vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Fila central: textos + imagen ── */
+.mainRow {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 4vw, 3.5rem);
+  width: 100%;
+  max-width: 1100px;
+  min-height: 0;
+}
+
+.sideText {
+  flex: 0 1 clamp(120px, 14vw, 200px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  align-self: center;
+}
+
+.sideTextRight {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: clamp(0.62rem, 1vw, 0.72rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  font-family: system-ui, 'Segoe UI', sans-serif;
+}
+
+.sideLine {
+  margin: 0;
+  font-size: clamp(0.65rem, 1.05vw, 0.78rem);
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  font-family: system-ui, 'Segoe UI', sans-serif;
+  font-weight: 500;
+}
+
+.sideText:not(.sideTextRight) .sideLine {
+  text-align: left;
+}
+
+/* ── Retrato centrado ── */
+.imageWrapper {
+  flex: 0 0 auto;
+  width: clamp(200px, 26vw, 320px);
+  aspect-ratio: 3 / 4;
+  max-height: min(58vh, 520px);
+  overflow: hidden;
+  margin: 0;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Botón + scroll ── */
+.bottomCenter {
+  position: absolute;
+  bottom: clamp(1.25rem, 3vh, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  background: transparent;
+  border: 1px solid rgba(10, 10, 10, 0.35);
+  color: #0a0a0a;
+  font-family: system-ui, 'Segoe UI', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 9px 22px;
+  cursor: none;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: #0a0a0a;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.scrollHint {
+  color: #0a0a0a;
+}
+
+@media (max-width: 768px) {
+  .titleBlock {
+    min-height: 3.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .name {
+    white-space: normal;
+    line-height: 1.05;
+    max-width: 92vw;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .mainRow {
+    flex-direction: column;
+    gap: 1.25rem;
+    justify-content: center;
+  }
+
+  .sideText,
+  .sideTextRight {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .sideText:not(.sideTextRight) {
+    order: 1;
+  }
+
+  .imageWrapper {
+    order: 2;
+    width: min(58vw, 240px);
+    max-height: min(45vh, 360px);
+  }
+
+  .sideTextRight {
+    order: 3;
+  }
+}

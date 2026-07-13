@@ -1,0 +1,196 @@
+.wrapper {
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  background: none;
+  border: none;
+  padding: 0;
+  display: block;
+
+  /* CONFIGURATION */
+  --sticker-rotate: 0deg;
+  /* Use 0deg by default so the sticker stands upright, you can change this */
+  --sticker-p: 10px;
+  --sticker-peelback-hover: 30%;
+  --sticker-peelback-active: 60%;
+  --sticker-peel-easing: 2s linear(0, 0.002 0.4%, 0.008 0.9%, 0.02 1.4%, 0.035 1.9%, 0.055 2.4%, 0.083 3%, 0.11 3.5%, 0.146 4.1%, 0.214 5.1%, 0.297 6.2%, 0.624 10.2%, 0.756 11.9%, 0.821 12.8%, 0.874 13.6%, 0.93 14.5%, 0.975 15.3%, 1.016 16.1%, 1.053 16.9%, 1.085 17.7%, 1.116 18.6%, 1.139 19.4%, 1.16 20.3%, 1.176 21.2%, 1.187 22.1%, 1.195 23.2%, 1.197 24.4%, 1.193 25.6%, 1.183 26.9%, 1.17 28.1%, 1.153 29.4%, 1.055 35.6%, 1.031 37.3%, 1.012 38.8%, 0.994 40.6%, 0.98 42.3%, 0.97 44.1%, 0.964 45.9%, 0.961 48.3%, 0.964 51.1%, 0.97 53.7%, 0.997 62.7%, 1.003 66%, 1.007 69.3%, 1.007 74.4%, 1 89.2%, 1);
+  --sticker-peel-hover-easing: 1s linear(0, 0.008 1.1%, 0.031 2.2%, 0.129 4.8%, 0.257 7.2%, 0.671 14.2%, 0.789 16.5%, 0.881 18.6%, 0.957 20.7%, 1.019 22.9%, 1.063 25.1%, 1.094 27.4%, 1.114 30.7%, 1.112 34.5%, 1.018 49.9%, 0.99 59.1%, 1);
+  --sticker-start: calc(-1 * var(--sticker-p));
+  --sticker-end: calc(100% + var(--sticker-p));
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.stickerContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.stickerMain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(var(--sticker-start) var(--sticker-start),
+      var(--sticker-end) var(--sticker-start),
+      var(--sticker-end) var(--sticker-end),
+      var(--sticker-start) var(--sticker-end));
+  transition: clip-path var(--sticker-peel-hover-easing);
+}
+
+.wrapper:hover .stickerMain {
+  clip-path: polygon(var(--sticker-start) var(--sticker-peelback-hover),
+      var(--sticker-end) var(--sticker-peelback-hover),
+      var(--sticker-end) var(--sticker-end),
+      var(--sticker-start) var(--sticker-end));
+  transition: clip-path var(--sticker-peel-hover-easing);
+}
+
+.wrapper:active .stickerMain {
+  clip-path: polygon(var(--sticker-start) var(--sticker-peelback-active),
+      var(--sticker-end) var(--sticker-peelback-active),
+      var(--sticker-end) var(--sticker-end),
+      var(--sticker-start) var(--sticker-end));
+  transition: clip-path var(--sticker-peel-easing);
+}
+
+.stickerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  display: block;
+  transform: rotate(var(--sticker-rotate));
+}
+
+.flap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: calc(-100% - var(--sticker-p) - var(--sticker-p));
+  clip-path: polygon(var(--sticker-start) var(--sticker-start),
+      var(--sticker-end) var(--sticker-start),
+      var(--sticker-end) var(--sticker-start),
+      var(--sticker-start) var(--sticker-start));
+  transform: scaleY(-1);
+  transition: all var(--sticker-peel-hover-easing);
+}
+
+.wrapper:hover .flap {
+  clip-path: polygon(var(--sticker-start) var(--sticker-start),
+      var(--sticker-end) var(--sticker-start),
+      var(--sticker-end) var(--sticker-peelback-hover),
+      var(--sticker-start) var(--sticker-peelback-hover));
+  top: calc(-100% + 2 * var(--sticker-peelback-hover) - 1px);
+  transition: all var(--sticker-peel-hover-easing);
+}
+
+.wrapper:active .flap {
+  clip-path: polygon(var(--sticker-start) var(--sticker-start),
+      var(--sticker-end) var(--sticker-start),
+      var(--sticker-end) var(--sticker-peelback-active),
+      var(--sticker-start) var(--sticker-peelback-active));
+  top: calc(-100% + 2 * var(--sticker-peelback-active) - 1px);
+  transition: all var(--sticker-peel-easing);
+}
+
+.flapImage,
+.shadowImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  display: block;
+  transform: rotate(var(--sticker-rotate));
+}
+
+.shadow {
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) blur(8px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stickerMain,
+.flap {
+  will-change: clip-path, transform;
+}
+
+.labelText {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: #2a2a6e;
+  opacity: 0.7;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Label de categoría */
+.label {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-size: 3rem;
+  color: #2a2a6e;
+  opacity: 0.65;
+  rotate: -1deg;
+  cursor: grab;
+  user-select: none;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+/* Lang toggle sticker — replaces large inline style objects */
+.langToggleWrapper {
+  width: 80px;
+  height: 80px;
+  cursor: grab;
+}
+
+.langToggleShadow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 4rem;
+  font-family: 'Caveat', cursive;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.3);
+  filter: blur(3px);
+  transform: translate(4px, 4px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.langToggleMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 4rem;
+  font-family: 'Caveat', cursive;
+  color: #2a2a6e;
+  font-weight: bold;
+}

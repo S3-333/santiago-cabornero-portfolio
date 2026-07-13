@@ -1,0 +1,222 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: #0a120a;
+}
+
+.wrapper[data-active='true'] .canvas {
+  cursor: none;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Cursor pixel art — solo activo con data-active en .wrapper */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.12s ease;
+}
+
+.cursor::before,
+.cursor::after {
+  content: '';
+  position: absolute;
+  background: #90ee90;
+  box-shadow:
+    0 0 0 1px #0a120a,
+    0 0 6px rgba(144, 238, 144, 0.45);
+  image-rendering: pixelated;
+}
+
+.cursor::before {
+  left: 6px;
+  top: 0;
+  width: 2px;
+  height: 14px;
+}
+
+.cursor::after {
+  left: 0;
+  top: 6px;
+  width: 14px;
+  height: 2px;
+}
+
+.hudContainer {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.hud {
+  display: flex;
+  gap: 1rem;
+  padding: 0.45rem 1.2rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(144, 238, 144, 0.2);
+  color: rgba(144, 238, 144, 0.65);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@supports not (font-family: 'Press Start 2P') {
+  .hud {
+    font-family: monospace;
+    font-size: 0.77rem;
+  }
+}
+
+.langToggle {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(144, 238, 144, 0.4);
+  color: #90ee90;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.72rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  pointer-events: auto;
+}
+
+.langToggle:hover {
+  background: rgba(144, 238, 144, 0.15);
+  transform: scale(1.05);
+}
+
+.dialogBox {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(720px, 92vw);
+  min-height: 120px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid rgba(144, 238, 144, 0.5);
+  padding: 1.25rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.dialogText {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: #e8e8e8;
+  margin: 0;
+  min-height: 3em;
+}
+
+.dialogHint {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.72rem;
+  color: rgba(144, 238, 144, 0.8);
+  align-self: flex-end;
+  margin-top: auto;
+  animation: pulse 1.5s infinite;
+}
+
+/* Intro Overlay */
+.introOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 18, 10, 0.9);
+  z-index: 50000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  /* Button reset */
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+.introBox {
+  text-align: center;
+  color: #90ee90;
+  font-family: 'Press Start 2P', monospace;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.introTag {
+  font-size: 0.6rem;
+  color: rgba(144, 238, 144, 0.6);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.introTitle {
+  font-size: 2.5rem;
+  margin: 0 0 1.5rem 0;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8), -2px -2px 0 rgba(0,0,0,0.8);
+}
+
+.introDesc {
+  font-size: 0.7rem;
+  line-height: 1.8;
+  color: #e8e8e8;
+  margin-bottom: 3rem;
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+.introDesc kbd {
+  background: rgba(144, 238, 144, 0.2);
+  border: 1px solid rgba(144, 238, 144, 0.5);
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+  font-family: monospace;
+}
+
+.introPrompt {
+  font-size: 0.8rem;
+  color: #90ee90;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* GSAP */
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  /* sin opacity ni transform acá */
+}
+
+

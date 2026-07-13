@@ -1,0 +1,267 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #000000;
+  color: #e5e7eb;
+  padding: 3rem 0 6rem; /* espacio para header y dots inferiores */
+}
+
+/* ── Header ── */
+.header {
+  padding: 0 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+}
+
+/* ── Toggle de idioma ── */
+.langToggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 50;
+}
+
+/* ── Galería de caras (superior) ── */
+.facesGallery {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.faceImg {
+  width: 25vw;
+  max-width: 100px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: grayscale(1) contrast(1.15);
+}
+
+/* ── Lista de proyectos ── */
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 1.5rem;
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  color: inherit;
+  /* Reset button styles */
+  padding: 0;
+}
+
+.projectCard:active {
+  transform: scale(0.98);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cardImageContainer {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #111;
+}
+
+.cardMedia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholderMedia {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+}
+
+.placeholderFace {
+  width: 50%;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.cardInfo {
+  padding: 1.25rem;
+}
+
+.cardTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.cardDesc {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Proyecto en pantalla completa ── */
+.fullProject {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: #0a0a0a;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  mix-blend-mode: difference;
+}
+
+.modalLangToggle {
+  top: 1rem;
+  right: 1.25rem;
+  left: auto;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
+
+.fullMediaContainer {
+  width: 100%;
+  height: auto;
+  max-height: 50vh;
+  background: #111;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullMedia {
+  width: 100%;
+  height: 100%;
+  max-height: 50vh;
+  object-fit: contain;
+}
+
+.fullInfo {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fullTitle {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tagBadge {
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.fullDesc {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.links a {
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: 'JetBrains Mono', monospace;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 2px;
+}

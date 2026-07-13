@@ -1,0 +1,204 @@
+/* ============================================================
+   SectionScroller.module.css
+   Layout del sistema de desplazamiento por secciones con GSAP.
+   Toda la animación va por JS; aquí solo estructura y UI.
+   ============================================================ */
+
+/* ── Viewport ──────────────────────────────────────────────────
+   position: fixed + overflow: hidden bloquea COMPLETAMENTE el
+   scroll nativo del navegador. El desplazamiento lo controla
+   100% GSAP a través del translateY de .track
+   ─────────────────────────────────────────────────────────── */
+.viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  /* Aislamos el viewport del stacking context global */
+  z-index: 0;
+}
+
+/* ── Pista de secciones ────────────────────────────────────────
+   Contenedor absoluto que cubre todo el viewport.
+   ─────────────────────────────────────────────────────────── */
+.track {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Sección individual ────────────────────────────────────────
+   Cada sección ocupa exactamente el viewport completo de forma absoluta.
+   opacity y pointer-events se controlan dinámicamente con JS/GSAP.
+   ─────────────────────────────────────────────────────────── */
+.section {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Sección activa */
+.sectionActive {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+/* Sección que se está yendo o viniendo durante la transición */
+.sectionTransitioning {
+  opacity: 1;
+  z-index: 20;
+}
+
+
+/* ── Navegación lateral (dots) ─────────────────────────────────
+   Columna de puntos fija a la derecha del viewport.
+   Siempre encima de todo (z-index alto).
+   ─────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+
+  pointer-events: auto;
+  mix-blend-mode: difference;
+}
+
+/* Dot base */
+.dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  background: transparent;
+  opacity: 0.5;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition:
+    background    0.22s ease,
+    border-color  0.22s ease,
+    transform     0.22s ease,
+    opacity       0.22s ease,
+    width         0.22s ease;
+}
+
+/* Área de clic expandida para accesibilidad (Lighthouse target-size) */
+.dot::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  bottom: -10px;
+  left: -20px;
+}
+
+.dot:hover {
+  opacity: 0.9;
+  transform: scale(1.4);
+}
+
+/* Dot activo */
+.dotActive {
+  background: #ffffff;
+  border-color: #ffffff;
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+
+
+/* ── Overlays de Transiciones ────────────────────────────────── */
+
+/* Pixel Overlay */
+.pixelOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.pixelCell {
+  background: #0d0d12;
+  border: 0.5px solid rgba(0, 0, 0, 0.05); /* previene costuras visuales */
+  transform: scale(0);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Paper Transition Crease Line & Page */
+.paperOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.paperCrease {
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  width: 80px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.35) 25%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(0, 0, 0, 0.25) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  box-shadow: -15px 0 30px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%) rotate(-6deg);
+  transform-origin: center center;
+  left: 100%;
+  will-change: left, transform;
+}
+
+/* Grid Overlay (Persianas) */
+.gridOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.gridCol {
+  flex: 1;
+  height: 100%;
+  background: #0f1016;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  transform: translateY(-100%);
+  will-change: transform;
+}
+
+/* Contact Dissolve Overlay */
+.contactOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  background: #0a0a0a;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  will-change: opacity;
+}

@@ -1,0 +1,64 @@
+.container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0; /* Debe estar por detrás del contenido principal (DNI) */
+  pointer-events: none; /* Crucial para no bloquear clicks al DNI o enlaces */
+}
+
+.blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  
+  /* El desenfoque masivo crea el efecto de luz/gas/bokeh */
+  filter: blur(100px);
+  
+  /* Opacidad moderada para que no queme los colores sobre fondo oscuro */
+  opacity: 0.55;
+  
+  /* Optimizaciones de rendimiento de navegador */
+  will-change: transform;
+  
+  /* Para que el centro del div sea el ancla de las coordenadas de traslación */
+  transform-origin: center center;
+}
+
+/* 
+  Los tamaños son relativos al viewport (vw) para que las luces escalen.
+  margin-top y margin-left están a -50% del tamaño del bloque 
+  para centrar el origen del div sobre el puntero del mouse exacto.
+*/
+
+.blob1 {
+  width: 45vw;
+  height: 45vw;
+  background: #b0dcdd;
+  margin-top: -22.5vw;
+  margin-left: -22.5vw;
+}
+
+.blob2 {
+  width: 55vw;
+  height: 55vw;
+  background: #e6e3e6;
+  margin-top: -27.5vw;
+  margin-left: -27.5vw;
+}
+
+.blob3 {
+  width: 35vw;
+  height: 35vw;
+  background: #edd8e1;
+  margin-top: -17.5vw;
+  margin-left: -17.5vw;
+}
+
+.blob4 {
+  width: 50vw;
+  height: 50vw;
+  background: #f0868e;
+  margin-top: -25vw;
+  margin-left: -25vw;
+}

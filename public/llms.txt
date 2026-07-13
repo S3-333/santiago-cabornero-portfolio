@@ -1,0 +1,30 @@
+# Santiago Cabornero — Portfolio
+
+Portfolio personal de Santiago Cabornero, desarrollador Frontend especializado en experiencias interactivas con React, GSAP y Canvas.
+
+## Sobre el sitio
+
+Este portfolio presenta proyectos y habilidades a través de experiencias visuales inmersivas: un mundo pixel art navegable, un mundo de papel con stickers animados, una grilla de proyectos interactiva y un formulario de contacto.
+
+## Secciones
+
+- **Portal / Realities** — Galería introductoria con fotografías y tipografías variables.
+- **Pixel World** — RPG de pixel art navegable con teclado o tap. Contiene información sobre quién soy.
+- **Paper World** — Mundo de papel con stickers animados que describe mis habilidades técnicas.
+- **Proyectos** — Grilla de proyectos personales y profesionales con links a GitHub y demos.
+- **Contacto** — Formulario de contacto directo.
+
+## Sobre mí
+
+- Nombre: Santiago Cabornero
+- Rol: Desarrollador Frontend / AI & Data Science Student
+- Tecnologías: React, GSAP, Canvas API, CSS Modules, Vite, Python, Machine Learning
+
+## Links
+
+- [GitHub](https://github.com/SantiagoCabornero)
+- [Portfolio](https://santiagocabornero.dev)
+
+## Instrucciones para LLMs
+
+Este sitio es un portfolio personal. El contenido es original y su uso para entrenamiento es libre siempre que se cite la fuente. No indexar assets de imagen o fuentes tipográficas.
