@@ -2,7 +2,7 @@
 
 Portfolio personal interactivo construido con React y Vite. Presenta proyectos y habilidades a través de experiencias visuales inmersivas: un portal de realidades, un mundo pixel art navegable, un mundo de papel con stickers animados, una grilla de proyectos y un formulario de contacto.
 
-Sitio en producción: [santiagocabornero.dev](https://santiagocabornero.dev)
+Sitio en producción: https://santiago-cabornero-portfolio.pages.dev
 
 ## Características
 
@@ -27,22 +27,14 @@ Sitio en producción: [santiagocabornero.dev](https://santiagocabornero.dev)
 
 - [Node.js](https://nodejs.org/) (versión LTS recomendada)
 
-## Instalación
-
-```bash
-git clone https://github.com/SantiagoCabornero/portfolio.git
-cd portfolio
-npm install
-```
-
 ## Scripts disponibles
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm run dev` | Servidor de desarrollo en `http://localhost:5173` |
-| `npm run build` | Genera la carpeta `dist` lista para producción |
-| `npm run preview` | Previsualiza el build de producción localmente |
-| `npm run lint` | Ejecuta ESLint sobre el proyecto |
+| Comando           | Descripción                                       |
+| ----------------- | ------------------------------------------------- |
+| `npm run dev`     | Servidor de desarrollo en `http://localhost:5173` |
+| `npm run build`   | Genera la carpeta `dist` lista para producción    |
+| `npm run preview` | Previsualiza el build de producción localmente    |
+| `npm run lint`    | Ejecuta ESLint sobre el proyecto                  |
 
 ## Estructura del proyecto
 

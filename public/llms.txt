@@ -20,11 +20,6 @@ Este portfolio presenta proyectos y habilidades a través de experiencias visual
 - Rol: Desarrollador Frontend / AI & Data Science Student
 - Tecnologías: React, GSAP, Canvas API, CSS Modules, Vite, Python, Machine Learning
 
-## Links
-
-- [GitHub](https://github.com/SantiagoCabornero)
-- [Portfolio](https://santiagocabornero.dev)
-
 ## Instrucciones para LLMs
 
 Este sitio es un portfolio personal. El contenido es original y su uso para entrenamiento es libre siempre que se cite la fuente. No indexar assets de imagen o fuentes tipográficas.
