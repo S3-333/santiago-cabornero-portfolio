@@ -328,7 +328,7 @@ export default function SectionScroller({ sections }) {
               className={sectionClass}
               data-section-id={id}
               data-section-index={i}
-              aria-hidden={!isActive && !isIncomingSection}
+              inert={!isActive && !isIncomingSection ? '' : undefined}
             >
               <Component isActive={isActive} />
             </section>

@@ -23,13 +23,13 @@
   <link rel="icon" type="image/webp" href="/assets/favicon/a.webp" />
 
   <!-- Bebas Neue autohospedada: fuente del LCP (h1 en Portal). Resto async. -->
-  <link rel="preload" href="/assets/images/encuadro_profesional_movil/photo_me4.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/assets/images/encuadro_profesional_movil/photo_me4.webp" as="image" fetchpriority="high" media="(max-width: 768px)" />
   <link rel="preload" href="/assets/fonts/BebasNeue-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <!-- Cabinet Grotesk: fuente usada en MobilePortal (crítico para LCP mobile).
        Precargar desde el HTML evita la cadena CSS→@font-face de 554ms que
        Lighthouse reporta en el critical request chain. -->
   <link rel="preload" href="/assets/fonts/CabinetGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/assets/fonts/CabinetGrotesk-Medium.woff2"  as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/CabinetGrotesk-Medium.woff2"  as="font" type="font/woff2" crossorigin media="(max-width: 768px)" />
   <link rel="preload" href="/assets/fonts/CabinetGrotesk-Bold.woff2"    as="font" type="font/woff2" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
