@@ -4,8 +4,6 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  /* Evita que el scroll interno se propague al contenedor snap externo */
-  overscroll-behavior-y: contain;
   /* Gradiente liviano */
   background: linear-gradient(135deg, #1f2229 0%, #15161a 100%);
   color: #e5e7eb;

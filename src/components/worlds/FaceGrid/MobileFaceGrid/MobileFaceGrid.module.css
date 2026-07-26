@@ -4,8 +4,6 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  /* Evita que el scroll interno se propague al contenedor snap externo */
-  overscroll-behavior-y: contain;
   background: #000000;
   color: #e5e7eb;
   padding: 3rem 0 6rem; /* espacio para header y dots inferiores */
