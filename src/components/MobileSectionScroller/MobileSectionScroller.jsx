@@ -23,7 +23,8 @@ export default function MobileSectionScroller({ sections }) {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          // Threshold 0.85: evita falsos positivos durante el desajuste de snap
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.85) {
             const idx = parseInt(entry.target.dataset.mobileSectionIndex)
             setCurrent(idx)
           }
@@ -31,7 +32,7 @@ export default function MobileSectionScroller({ sections }) {
       },
       {
         root: viewport,
-        threshold: 0.5,
+        threshold: 0.85,
       }
     )
 
@@ -39,15 +40,36 @@ export default function MobileSectionScroller({ sections }) {
     return () => observer.disconnect()
   }, [])
 
-  // Scroll programático al tocar un dot
+  // Scroll programático al tocar un dot — sin smooth para que el snap mandatory
+  // no compita con la animación CSS y la sección encaje exactamente
   const goTo = useCallback((index) => {
     const viewport = viewportRef.current
     if (!viewport) return
     const sectionEl = viewport.querySelector(`[data-mobile-section-index="${index}"]`)
     if (sectionEl) {
-      sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      // offsetTop es relativo al scrollport; más fiable que scrollIntoView con snap
+      viewport.scrollTo({ top: sectionEl.offsetTop, behavior: 'instant' })
     }
   }, [])
+
+  // Re-snap al cambio de tamaño del viewport visual (barra de direcciones)
+  // Garantiza que la sección activa siempre llene el scrollport tras el resize
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!vv) return
+
+    function onVisualViewportResize() {
+      const viewport = viewportRef.current
+      if (!viewport) return
+      const sectionEl = viewport.querySelector(`[data-mobile-section-index="${current}"]`)
+      if (sectionEl) {
+        viewport.scrollTo({ top: sectionEl.offsetTop, behavior: 'instant' })
+      }
+    }
+
+    vv.addEventListener('resize', onVisualViewportResize)
+    return () => vv.removeEventListener('resize', onVisualViewportResize)
+  }, [current])
 
   return (
     <div ref={viewportRef} className={styles.viewport} aria-live="polite">

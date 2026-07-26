@@ -4,6 +4,8 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  /* Evita que el scroll interno se propague al contenedor snap externo */
+  overscroll-behavior-y: contain;
   /* Gradiente liviano */
   background: linear-gradient(135deg, #1f2229 0%, #15161a 100%);
   color: #e5e7eb;
@@ -62,6 +64,8 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Firefox */
   -webkit-overflow-scrolling: touch;
+  /* Indica al browser que este eje es horizontal — evita ambigüedad en gestos diagonales */
+  touch-action: pan-x;
 }
 
 .scroller::-webkit-scrollbar {

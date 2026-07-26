@@ -1,7 +1,8 @@
 .wrapper {
   position: relative;
   width: 100%;
-  height: 100dvh;
+  /* 100% hereda el 100dvh del padre (.section) — fuente de verdad única */
+  height: 100%;
   overflow: hidden;
   background: #0a120a;
 }

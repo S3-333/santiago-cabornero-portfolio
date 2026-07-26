@@ -87,9 +87,12 @@ export function usePixelWorld(canvasRef, _dialogRef, enterRange, exitRange, lang
         w = Math.round(cr.width)  || window.innerWidth
         h = Math.round(cr.height) || window.innerHeight
       } else {
-        // Primera llamada: el observer aún no existe, usamos window
+        // Primera llamada: el observer aún no existe.
+        // visualViewport.height refleja el viewport visual real (igual que dvh),
+        // más preciso que window.innerHeight en móvil cuando la barra de direcciones
+        // está visible o en transición.
         w = window.innerWidth
-        h = window.innerHeight
+        h = (window.visualViewport?.height) ?? window.innerHeight
       }
       canvas.width  = w
       canvas.height = h
