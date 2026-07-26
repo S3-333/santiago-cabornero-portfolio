@@ -70,18 +70,17 @@ export default function MobilePaperWorld({ isActive }) {
 
       {/* Bottom Sheet / Modal de Información */}
       {activeTech && (
-        <div 
-          className={styles.modalOverlay} 
-          onClick={closeModal}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeModal() }}
-        >
-          <div 
-            className={styles.modalSheet} 
+        <div className={styles.modalOverlay}>
+          <button
+            type="button"
+            className={styles.modalBackdrop}
+            onClick={closeModal}
+            aria-label="Cerrar modal"
+          />
+          <div
+            className={styles.modalSheet}
             onClick={e => e.stopPropagation()}
             role="presentation"
-            onKeyDown={e => e.stopPropagation()}
           >
             <button type="button" className={styles.closeBtn} onClick={closeModal} aria-label="Cerrar">
               ✕

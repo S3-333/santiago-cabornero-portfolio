@@ -43,7 +43,12 @@ let framesLoadPromise = null
 function loadAsciiFrames() {
   if (!framesLoadPromise) {
     framesLoadPromise = Promise.all(
-      FRAME_PATHS.map((path) => fetch(path).then((r) => r.text()))
+      FRAME_PATHS.map((path) =>
+        fetch(path).then((r) => {
+          if (!r.ok) throw new Error(`HTTP ${r.status} al cargar ${path}`)
+          return r.text()
+        })
+      )
     )
       .then((texts) => texts.map(parseFrame))
       .catch((err) => {

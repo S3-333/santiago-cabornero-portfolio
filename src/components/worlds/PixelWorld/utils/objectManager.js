@@ -17,6 +17,7 @@ function loadImage(src) {
 // Devuelve el array de objetos con su imagen ya resuelta
 export async function loadWorldObjects(jsonPath) {
   const res  = await fetch(jsonPath)
+  if (!res.ok) throw new Error(`HTTP ${res.status} al cargar ${jsonPath}`)
   const data = await res.json()
 
   // Performance: all image loads run in parallel with Promise.all instead of sequentially

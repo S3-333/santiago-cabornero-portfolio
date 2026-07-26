@@ -47,6 +47,19 @@
   text-align: left;
 }
 
+/* Botón invisible que captura el flip — cubre todo el card
+   pero queda por debajo de los overlays interactivos gracias
+   a que éstos usan z-index y stopPropagation en sus clicks. */
+.flipBtn {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: inherit;
+}
+
 /* Sombra separada del .card para no romper preserve-3d
    (filter en el elemento 3D aplana el contexto) */
 .scene::after {

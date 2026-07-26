@@ -107,18 +107,13 @@ export default function Contact() {
       <AmbientBlobs />
 
       {/* ── DNI Flip Card ── */}
+      {/*
+        FIX: el wrapper ya no tiene role="button" para evitar links anidados
+        dentro de un control interactivo (violación WAI-ARIA).
+        El flip se delega a un <button> invisible encima del card.
+      */}
       <div
-        role="button"
-        tabIndex={0}
         className={`${styles.scene} ${flipped ? styles.sceneFlipped : ''}`}
-        onClick={() => setFlipped(f => !f)}
-        aria-label="Dar vuelta el DNI"
-        onKeyDown={e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault()
-            setFlipped(f => !f)
-          }
-        }}
       >
         <div className={styles.card}>
 
@@ -129,6 +124,12 @@ export default function Contact() {
               alt="DNI frente"
               className={styles.dniImage}
               draggable={false}
+            />
+            <button
+              type="button"
+              className={styles.flipBtn}
+              onClick={e => { e.stopPropagation(); setFlipped(f => !f) }}
+              aria-label="Dar vuelta el DNI"
             />
 
             {/* ── Overlays de texto – mover a gusto ── */}
@@ -251,6 +252,12 @@ export default function Contact() {
               alt="DNI trasero"
               className={styles.dniImage}
               draggable={false}
+            />
+            <button
+              type="button"
+              className={styles.flipBtn}
+              onClick={e => { e.stopPropagation(); setFlipped(f => !f) }}
+              aria-label="Ver el frente del DNI"
             />
 
             {/* Mensaje de despedida (Arriba a la izquierda) */}

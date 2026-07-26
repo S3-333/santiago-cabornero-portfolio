@@ -226,7 +226,7 @@ export const STICKERS = [
   },
   {
     id: "cursor",
-    category: "tools",
+    category: "design",
     x: 2650,
     y: 250,
     src: "/assets/images/papel/techs/cursor.svg",
@@ -244,7 +244,7 @@ export const STICKERS = [
   },
   {
     id: "claudecode",
-    category: "tools",
+    category: "design",
     x: 2380,
     y: 350,
     src: "/assets/images/papel/techs/claude.svg",

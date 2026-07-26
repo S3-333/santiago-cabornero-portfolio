@@ -289,7 +289,7 @@ export default function SectionScroller({ sections }) {
 
     const onTouchEnd = (e) => {
       if (isTransitioning.current) return
-      const delta = touchStartY.current - e.changedTouches[0].clientY
+      const delta = touchStartY.current - (e.changedTouches[0]?.clientY ?? touchStartY.current)
       if (Math.abs(delta) < TOUCH_THRESHOLD) return
 
       const next = delta > 0

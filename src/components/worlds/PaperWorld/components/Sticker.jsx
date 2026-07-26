@@ -251,7 +251,7 @@ export default function Sticker({ sticker, onOpenDialog, activeDialogId }) {
                 </div>
 
                 <div className={styles.stickerMain} style={{ filter: `url(#${dropShadowId})` }}>
-                    <img src={sticker.src} className={styles.stickerImage} style={{ filter: `url(#${outerStrokeId})` }} alt={sticker.label} draggable={false} loading="lazy" />
+                    <img src={sticker.src} className={styles.stickerImage} style={{ filter: `url(#${outerStrokeId})` }} alt={sticker.label || ''} draggable={false} loading="lazy" />
                 </div>
 
                 <div className={styles.flap}>

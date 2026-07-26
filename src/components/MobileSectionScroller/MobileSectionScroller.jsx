@@ -17,9 +17,6 @@ export default function MobileSectionScroller({ sections }) {
     const viewport = viewportRef.current
     if (!viewport) return
 
-    const sectionEls = viewport.querySelectorAll('[data-mobile-section]')
-    if (!sectionEls.length) return
-
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -36,7 +33,9 @@ export default function MobileSectionScroller({ sections }) {
       }
     )
 
+    const sectionEls = viewport.querySelectorAll('[data-mobile-section]')
     sectionEls.forEach((el) => observer.observe(el))
+
     return () => observer.disconnect()
   }, [])
 
