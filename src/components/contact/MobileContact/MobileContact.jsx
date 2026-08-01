@@ -37,7 +37,7 @@ export default function MobileContact({ isActive }) {
           <p className={styles.subtitle}>
             {language === 'es' 
               ? 'Siempre abierto a nuevas propuestas y desafíos interesantes.' 
-              : 'Always open to new proposals and interesting challenges.'}
+              : 'Always open to new offers and interesting challenges.'}
           </p>
         </div>
 

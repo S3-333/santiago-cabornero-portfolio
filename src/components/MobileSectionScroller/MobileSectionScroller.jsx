@@ -83,7 +83,7 @@ export default function MobileSectionScroller({ sections }) {
           // en los descendientes cuando la sección no está activa.
           // aria-hidden solo ocultaba visualmente pero dejaba el foco accesible
           // → violación WAI-ARIA cuando un botón hijo retenía el foco.
-          inert={current !== i ? '' : undefined}
+          inert={current !== i || undefined}
         >
           <Component isActive={current === i} />
         </section>

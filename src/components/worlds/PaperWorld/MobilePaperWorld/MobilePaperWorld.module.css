@@ -62,8 +62,10 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Firefox */
   -webkit-overflow-scrolling: touch;
-  /* Indica al browser que este eje es horizontal — evita ambigüedad en gestos diagonales */
-  touch-action: pan-x;
+  /* pan-x pan-y: el browser arbitra el gesto según la dirección predominante.
+     pan-x solo bloqueaba el scroll vertical del padre cuando el dedo empezaba
+     sobre el scroller — ahora los gestos verticales propagan al MobileSectionScroller. */
+  touch-action: pan-x pan-y;
 }
 
 .scroller::-webkit-scrollbar {

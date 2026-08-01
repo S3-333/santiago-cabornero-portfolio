@@ -262,7 +262,7 @@ export default function Contact() {
 
             {/* Mensaje de despedida (Arriba a la izquierda) */}
             <div className={`${styles.overlay} ${styles.overlayFarewellTopLeft}`}>
-              <p className={styles.farewellTitle}>Always open to new proposals, challenges, and networking.
+              <p className={styles.farewellTitle}>Always open to new offers, challenges, and networking.
                 <br /> <br />No dudes en contactarme </p>
             </div>
 

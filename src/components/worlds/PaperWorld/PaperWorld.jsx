@@ -74,7 +74,7 @@ export default function PaperWorld({ isActive }) {
                 >
                     <div className={styles.introBox}>
                         <p className={styles.introTag}>— WORLD 02</p>
-                        <h2 className={styles.introTitle}>{language === 'es' ? 'LO QUE SÉ' : 'WHAT I KNOW'}</h2>
+                        <h2 className={styles.introTitle}>{language === 'es' ? 'HABILIDADES' : 'SKILLS & KNOWLEDGE'}</h2>
                         <p className={styles.introDesc}>
                             {language === 'es' ? 'Explora el tablero. Haz click en los stickers para saber más.' : 'Explore the board. Click on the stickers to learn more.'}
                         </p>

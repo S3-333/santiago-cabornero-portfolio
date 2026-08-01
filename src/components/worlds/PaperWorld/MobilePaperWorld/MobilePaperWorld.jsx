@@ -36,7 +36,7 @@ export default function MobilePaperWorld({ isActive }) {
     <section className={styles.wrapper}>
       <div className={styles.header}>
         <p className={styles.tag}>— WORLD 02</p>
-        <h2 className={styles.title}>{language === 'es' ? 'LO QUE SÉ' : 'WHAT I KNOW'}</h2>
+        <h2 className={styles.title}>{language === 'es' ? 'HABILIDADES' : 'SKILLS & KNOWLEDGE'}</h2>
       </div>
 
       <div className={styles.categories}>
